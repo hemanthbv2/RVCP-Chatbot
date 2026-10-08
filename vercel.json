@@ -1,4 +1,5 @@
 {
+  "cleanUrls": true,
   "rewrites": [
     {
       "source": "/api/(.*)",
@@ -7,6 +8,10 @@
     {
       "source": "/send-(.*)",
       "destination": "/api/index.js"
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/dashboard/index.html"
     }
   ]
 }

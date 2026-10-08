@@ -4,8 +4,8 @@
   "description": "RV College of Physiotherapy (RVCP) conversational chatbot and telemetry tracking dashboard.",
   "main": "chatbot-data.js",
   "scripts": {
-    "dev": "node server.js",
-    "start:local": "node server.js",
+    "dev": "node api/index.js",
+    "start:local": "node api/index.js",
     "test": "node test-endpoints.js"
   },
   "keywords": [

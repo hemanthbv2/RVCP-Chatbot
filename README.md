@@ -47,7 +47,6 @@ rvcp-chatbot/
 ├── script.js                # Chatbot engine, UI controller, and telemetry
 ├── style.css                # Premium RVCP-branded widget theme (#6F4D41)
 ├── index.html               # Standalone test landing page with RVCP backdrop
-├── server.js                # Express daemon server for local execution
 ├── rvcp-chatbot.php         # WordPress plugin entrypoint with Admin settings
 ├── rvcp-chatbot.zip         # 1-Click production-ready WordPress plugin package
 ├── vercel.json              # Vercel deployment configuration
@@ -66,9 +65,9 @@ rvcp-chatbot/
 npm install
 
 # Start the local server
-npm start
+npm run dev
 # or
-node server.js
+node api/index.js
 ```
 
 * **Live Chatbot Demo**: Open [http://localhost:3000](http://localhost:3000)

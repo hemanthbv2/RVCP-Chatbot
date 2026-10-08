@@ -20,8 +20,10 @@ if (!fs.existsSync(dataDir)) {
     try { fs.mkdirSync(dataDir, { recursive: true }); } catch (_) {}
 }
 
-app.use(express.static(rootDir));
-app.use('/dashboard', express.static(dashboardDir));
+if (!isServerless) {
+    app.use(express.static(rootDir));
+    app.use('/dashboard', express.static(dashboardDir));
+}
 
 // Helper for local file persistence (checks writable dataDir first, then bundled data)
 const readDataFile = (filename, defaultValue = []) => {
@@ -305,6 +307,15 @@ app.use((req, res, next) => {
     }
     next();
 });
+
+// Standalone server listener for local development
+const PORT = process.env.PORT || 3000;
+if (!isServerless) {
+    app.listen(PORT, () => {
+        console.log(`RVCP Backend & Telemetry Server running on http://localhost:${PORT}`);
+        console.log(`Dashboard accessible at http://localhost:${PORT}/dashboard`);
+    });
+}
 
 // Export Express app for Vercel Serverless
 module.exports = app;
