@@ -690,11 +690,17 @@ const FAQ_KNOWLEDGE = [
   },
   {
     id: "faq_leadership",
-    patterns: ["principal", "dean", "who is principal", "pruthviraj", "management", "trustees", "president", "shyam", "nagaraj"],
-    answer: `👨‍🏫 <strong>RVCP Leadership:</strong>\n\n• <strong>Principal:</strong> <strong>Dr. Pruthviraj R (PT)</strong>, Professor & Principal of RVCP, and Dean of Faculty in Physiotherapy & Allied Health Sciences at RGUHS.\n• <strong>President, RSST:</strong> Dr. M.P. Shyam\n• <strong>Hon. Secretary, RSST:</strong> Dr. (h.c.) A.V.S. Murthy\n• <strong>Hon. Joint Secretary, RSST:</strong> Mr. D.P. Nagaraj`,
+    patterns: [
+      "principal", "princi", "princie", "princii", "princ", "princpal", "princple", "principle", "principals",
+      "principal sir", "dean", "dean sir", "who is principal", "who is the principal", "pruthviraj", "dr pruthviraj",
+      "dr. pruthviraj", "management", "trustees", "president", "shyam", "nagaraj", "avs murthy", "head of college",
+      "head of institution", "director", "leadership", "who is head", "who is the head"
+    ],
+    answer: `👨‍🏫 <strong>RVCP Principal & Institutional Leadership:</strong>\n\n• <strong>Principal:</strong> <strong>Dr. Pruthviraj R (PT)</strong>, Professor & Principal of RVCP, and Dean of Faculty in Physiotherapy & Allied Health Sciences at RGUHS.\n• <strong>President, RSST:</strong> Dr. M.P. Shyam\n• <strong>Hon. Secretary, RSST:</strong> Dr. (h.c.) A.V.S. Murthy\n• <strong>Hon. Joint Secretary, RSST:</strong> Mr. D.P. Nagaraj\n\nWould you like to connect with faculty or explore departments?`,
     actionButtons: [
       { label: "🏢 Faculty & HOD Directory", action: "dept_contacts" },
       { label: "ℹ️ About RVCP & RSST", action: "about" },
+      { label: "📞 Contact College Office", action: "contact" },
       { label: "← Main Menu", action: "welcome" }
     ]
   },
@@ -754,7 +760,7 @@ const INTENT_MAP = [
   { keywords: ["career", "placements", "jobs", "salary", "scope", "employment"], action: "bpt_career", weight: 25 },
   { keywords: ["counsellor", "counselor", "callback", "call me", "talk to counsellor", "guidance", "speak to someone", "admissions help"], action: "talk_to_counsellor", weight: 25 },
   { keywords: ["book counselling", "priority counselling", "mpt guidance"], action: "book_counselling", weight: 25 },
-  { keywords: ["faculty", "hod", "principal", "professor", "teachers", "staff", "departments", "head of department", "pruthviraj", "paul daniel", "pallavi"], action: "dept_contacts", weight: 25 },
+  { keywords: ["faculty", "hod", "principal", "princi", "princie", "princple", "principle", "professor", "teachers", "staff", "departments", "head of department", "pruthviraj", "paul daniel", "pallavi", "dean", "leadership"], action: "dept_contacts", weight: 25 },
   { keywords: ["about", "history", "trust", "rsst", "rvei", "affiliation", "rguhs", "ncahp", "college info", "why rvcp", "established"], action: "about", weight: 22 },
   { keywords: ["contact", "phone", "call", "email", "office number", "reach", "helpline", "admission office"], action: "contact", weight: 22 },
   { keywords: ["admission", "admissions", "apply", "enroll", "enrol", "application", "portal", "registration", "seat", "seats"], action: "bpt_main", weight: 20 },

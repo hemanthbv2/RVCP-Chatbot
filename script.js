@@ -808,17 +808,47 @@
   function matchFaq(text) {
     if (typeof FAQ_KNOWLEDGE === 'undefined' || !Array.isArray(FAQ_KNOWLEDGE)) return null;
     const lower = text.toLowerCase().trim();
+    const words = lower.replace(/[^\w\s]/g, '').split(/\s+/).filter(Boolean);
+
+    // 1. Direct pattern match
     for (const faq of FAQ_KNOWLEDGE) {
       if (faq.patterns.some(p => lower.includes(p))) {
         return faq;
       }
     }
+
+    // 2. Token / Stem / Common Root match (e.g. "princi" matching "principal")
+    for (const faq of FAQ_KNOWLEDGE) {
+      for (const pattern of faq.patterns) {
+        if (pattern.length >= 4 && lower.includes(pattern)) return faq;
+        if (lower.length >= 4 && pattern.includes(lower)) return faq;
+
+        for (const word of words) {
+          if (word.length >= 4) {
+            // Direct prefix/stem
+            if (pattern.startsWith(word) || (pattern.length >= 4 && word.startsWith(pattern))) {
+              return faq;
+            }
+            // Shared common root of 5+ letters (e.g. principal/principle, scholarship/scholership)
+            let common = 0;
+            while (common < word.length && common < pattern.length && word[common] === pattern[common]) {
+              common++;
+            }
+            if (common >= 5 && (word.length - common <= 3) && (pattern.length - common <= 3)) {
+              return faq;
+            }
+          }
+        }
+      }
+    }
+
     return null;
   }
 
   function matchIntent(text) {
     if (typeof INTENT_MAP === 'undefined' || !Array.isArray(INTENT_MAP)) return null;
     const lower = text.toLowerCase().trim();
+    const words = lower.replace(/[^\w\s]/g, '').split(/\s+/).filter(Boolean);
     let bestAction = null;
     let highestScore = 0;
 
@@ -831,6 +861,19 @@
           if (score > highestScore) {
             highestScore = score;
             bestAction = intent.action;
+          }
+        } else {
+          // Token prefix/stem matching for words >= 4 characters
+          for (const word of words) {
+            if (word.length >= 4) {
+              if (keyword.startsWith(word) || (keyword.length >= 4 && word.startsWith(keyword))) {
+                const score = baseWeight + (word.length * 2) - 1;
+                if (score > highestScore) {
+                  highestScore = score;
+                  bestAction = intent.action;
+                }
+              }
+            }
           }
         }
       }
