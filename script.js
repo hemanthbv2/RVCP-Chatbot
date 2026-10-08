@@ -805,31 +805,113 @@
     resetInactivityTimer();
   }
 
+  // ─── Student Slang & Abbreviations Dictionary ────────────
+  const ABBREVIATIONS_MAP = {
+    // Leadership & People
+    "princi": "principal", "princ": "principal", "pncpl": "principal", "princie": "principal",
+    "princii": "principal", "princple": "principal", "princpal": "principal", "principle": "principal",
+    "dir": "director", "dr": "doctor", "prof": "professor", "profs": "professor",
+    "fac": "faculty", "facs": "faculty", "hod": "head of department", "hods": "head of department",
+
+    // College & Campus
+    "clg": "college", "colg": "college", "coll": "college", "inst": "institute",
+    "univ": "university", "dept": "department", "depts": "departments",
+
+    // Programmes
+    "bpt": "bpt", "mpt": "mpt", "pt": "physiotherapy", "phys": "physiotherapy",
+    "physio": "physiotherapy", "bach": "bachelor", "mast": "master", "ug": "bpt", "pg": "mpt",
+
+    // MPT Specialisations
+    "msk": "musculoskeletal", "sprts": "sports", "neuro": "neurological", "neur": "neurological",
+    "ortho": "orthopaedic", "orth": "orthopaedic", "peds": "pediatric", "paed": "pediatric",
+    "ped": "pediatric", "cardio": "cardiopulmonary", "pulm": "pulmonary", "comm": "community",
+
+    // Fees & Finance
+    "fe": "fees", "fee": "fees", "fees": "fees", "fi": "fees", "chrg": "charges", "chrgs": "charges",
+    "pkg": "package", "pack": "package", "tuit": "tuition", "mgmt": "management",
+    "instl": "installment", "instal": "installment",
+
+    // Scholarships
+    "schol": "scholarship", "schlr": "scholarship", "sch": "scholarship",
+    "schlrshp": "scholarship", "scholr": "scholarship", "mer": "merit",
+
+    // Hostel & Accommodation
+    "host": "hostel", "hostl": "hostel", "hstl": "hostel", "accom": "accommodation",
+    "accomodation": "accommodation", "accomm": "accommodation", "rm": "room", "rms": "rooms",
+    "shrg": "sharing", "dorm": "dormitory",
+
+    // Eligibility & Exams
+    "elig": "eligibility", "elg": "eligibility", "eligib": "eligibility",
+    "pct": "percentage", "perc": "percentage", "per": "percentage",
+    "pcb": "pcb", "puc": "eligibility", "ent": "entrance", "qual": "qualification",
+
+    // Admissions & Applications
+    "adm": "admission", "admn": "admission", "admiss": "admission", "admin": "admission",
+    "appl": "apply", "app": "application", "reg": "registration", "regn": "registration",
+
+    // Placements & Jobs
+    "place": "placement", "plcmnt": "placement", "placements": "placement",
+    "sal": "salary", "fut": "future", "opp": "opportunities", "hosp": "hospital",
+
+    // Location & Contact
+    "loc": "location", "locn": "location", "addr": "address", "add": "address",
+    "ph": "phone", "num": "number", "no": "number", "cont": "contact",
+    "mob": "mobile", "hlp": "help", "info": "information",
+
+    // Clinical
+    "opd": "opd", "clnc": "clinic", "clinc": "clinic", "evng": "evening",
+    "eve": "evening", "rot": "internship", "intern": "internship",
+
+    // Timings
+    "tim": "timings", "time": "timings", "hrs": "hours", "sched": "schedule",
+
+    // Documents
+    "doc": "documents", "docs": "documents", "cert": "certificates", "certs": "certificates",
+
+    // Discounts & Waivers
+    "disc": "scholarship"
+  };
+
+  function normalizeQuery(text) {
+    const raw = text.toLowerCase().trim();
+    const tokens = raw.replace(/[^\w\s]/g, ' ').split(/\s+/).filter(Boolean);
+    const expanded = tokens.map(t => ABBREVIATIONS_MAP[t] || t);
+    return {
+      raw,
+      tokens,
+      expandedQuery: expanded.join(' '),
+      allTokens: Array.from(new Set([...tokens, ...expanded]))
+    };
+  }
+
   function matchFaq(text) {
     if (typeof FAQ_KNOWLEDGE === 'undefined' || !Array.isArray(FAQ_KNOWLEDGE)) return null;
-    const lower = text.toLowerCase().trim();
-    const words = lower.replace(/[^\w\s]/g, '').split(/\s+/).filter(Boolean);
+    const norm = normalizeQuery(text);
+    const candidates = [norm.raw, norm.expandedQuery];
 
-    // 1. Direct pattern match
-    for (const faq of FAQ_KNOWLEDGE) {
-      if (faq.patterns.some(p => lower.includes(p))) {
-        return faq;
+    // 1. Direct pattern match against raw and expanded queries
+    for (const query of candidates) {
+      for (const faq of FAQ_KNOWLEDGE) {
+        if (faq.patterns.some(p => query.includes(p))) {
+          return faq;
+        }
       }
     }
 
-    // 2. Token / Stem / Common Root match (e.g. "princi" matching "principal")
+    // 2. Token / Stem / Common Root match across all tokens (original + expanded)
     for (const faq of FAQ_KNOWLEDGE) {
       for (const pattern of faq.patterns) {
-        if (pattern.length >= 4 && lower.includes(pattern)) return faq;
-        if (lower.length >= 4 && pattern.includes(lower)) return faq;
+        for (const query of candidates) {
+          if (pattern.length >= 4 && query.includes(pattern)) return faq;
+          if (query.length >= 4 && pattern.includes(query)) return faq;
+        }
 
-        for (const word of words) {
-          if (word.length >= 4) {
-            // Direct prefix/stem
+        for (const word of norm.allTokens) {
+          if (word.length >= 3) {
+            if (pattern === word) return faq;
             if (pattern.startsWith(word) || (pattern.length >= 4 && word.startsWith(pattern))) {
               return faq;
             }
-            // Shared common root of 5+ letters (e.g. principal/principle, scholarship/scholership)
             let common = 0;
             while (common < word.length && common < pattern.length && word[common] === pattern[common]) {
               common++;
@@ -847,31 +929,37 @@
 
   function matchIntent(text) {
     if (typeof INTENT_MAP === 'undefined' || !Array.isArray(INTENT_MAP)) return null;
-    const lower = text.toLowerCase().trim();
-    const words = lower.replace(/[^\w\s]/g, '').split(/\s+/).filter(Boolean);
+    const norm = normalizeQuery(text);
+    const candidates = [norm.raw, norm.expandedQuery];
     let bestAction = null;
     let highestScore = 0;
 
     for (const intent of INTENT_MAP) {
       const baseWeight = intent.weight || 10;
       for (const keyword of intent.keywords) {
-        if (lower.includes(keyword)) {
-          // Specific and multi-word keywords earn higher specificity scores
-          const score = baseWeight + (keyword.length * 2);
-          if (score > highestScore) {
-            highestScore = score;
-            bestAction = intent.action;
+        for (const query of candidates) {
+          if (query.includes(keyword)) {
+            const score = baseWeight + (keyword.length * 2);
+            if (score > highestScore) {
+              highestScore = score;
+              bestAction = intent.action;
+            }
           }
-        } else {
-          // Token prefix/stem matching for words >= 4 characters
-          for (const word of words) {
-            if (word.length >= 4) {
-              if (keyword.startsWith(word) || (keyword.length >= 4 && word.startsWith(keyword))) {
-                const score = baseWeight + (word.length * 2) - 1;
-                if (score > highestScore) {
-                  highestScore = score;
-                  bestAction = intent.action;
-                }
+        }
+
+        for (const word of norm.allTokens) {
+          if (word.length >= 3) {
+            if (keyword === word) {
+              const score = baseWeight + (word.length * 2);
+              if (score > highestScore) {
+                highestScore = score;
+                bestAction = intent.action;
+              }
+            } else if (word.length >= 4 && (keyword.startsWith(word) || word.startsWith(keyword))) {
+              const score = baseWeight + (word.length * 2) - 1;
+              if (score > highestScore) {
+                highestScore = score;
+                bestAction = intent.action;
               }
             }
           }
