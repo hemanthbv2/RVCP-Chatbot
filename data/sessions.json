@@ -1,0 +1,556 @@
+{
+  "sess_test_123": {
+    "sessionId": "sess_test_123",
+    "startedAt": "2026-10-06T08:47:58.900Z",
+    "lastActive": "2026-10-06T08:47:58.900Z",
+    "pageUrl": "",
+    "userAgent": "",
+    "eventCount": 1,
+    "hasLead": false,
+    "events": [
+      {
+        "timestamp": "2026-10-06T08:47:58.900Z",
+        "eventType": "user_message",
+        "detail": {
+          "text": "What are the BPT fees and scholarships?"
+        }
+      }
+    ]
+  },
+  "sess_verify_402672926": {
+    "sessionId": "sess_verify_402672926",
+    "startedAt": "2026-10-06T09:28:29.452Z",
+    "lastActive": "2026-10-06T09:28:29.483Z",
+    "pageUrl": "",
+    "userAgent": "",
+    "eventCount": 4,
+    "hasLead": true,
+    "events": [
+      {
+        "timestamp": "2026-10-06T09:28:29.483Z",
+        "eventType": "unmatched_query",
+        "detail": {
+          "text": "Is there a cricket ground in the campus?"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T09:28:29.481Z",
+        "eventType": "user_message",
+        "detail": {
+          "text": "How do I apply for the 2 Lakh scholarship?"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T09:28:29.478Z",
+        "eventType": "button_clicked",
+        "detail": {
+          "action": "bpt_main",
+          "label": "BPT"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T09:28:29.452Z",
+        "eventType": "chat_opened",
+        "detail": {}
+      }
+    ]
+  },
+  "sess_muwh9rqt_6exk53": {
+    "sessionId": "sess_muwh9rqt_6exk53",
+    "startedAt": "2026-10-06T09:44:13.117Z",
+    "lastActive": "2026-10-06T10:05:17.534Z",
+    "pageUrl": "http://127.0.0.1:5500/rvcp-chatbot/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "eventCount": 1594,
+    "hasLead": false,
+    "events": [
+      {
+        "timestamp": "2026-10-06T10:05:17.534Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:17.379Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:17.208Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:17.036Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:16.870Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:16.669Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:16.485Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:16.284Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:16.111Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:15.928Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:15.777Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:15.594Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:15.411Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:15.229Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:15.064Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:14.899Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:14.715Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:14.537Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:14.338Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:14.144Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:13.962Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:13.753Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:13.566Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:13.383Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:13.187Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:13.006Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:12.800Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:12.633Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:12.440Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:12.233Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:12.052Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:11.869Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:11.689Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:11.487Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:11.287Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:11.091Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:10.886Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:10.691Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:10.521Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:10.378Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:10.205Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:10.045Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:09.875Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:09.681Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:09.515Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:09.343Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:09.199Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:09.045Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:08.880Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:08.692Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      }
+    ]
+  },
+  "sess_muwij2rw_chzm11": {
+    "sessionId": "sess_muwij2rw_chzm11",
+    "startedAt": "2026-10-06T10:05:20.972Z",
+    "lastActive": "2026-10-06T12:25:12.810Z",
+    "pageUrl": "http://localhost:3000/index.html",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "eventCount": 18,
+    "hasLead": false,
+    "events": [
+      {
+        "timestamp": "2026-10-06T12:25:12.810Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T12:25:09.041Z",
+        "eventType": "chat_opened",
+        "detail": {}
+      },
+      {
+        "timestamp": "2026-10-06T12:25:02.264Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "campus_book_0300"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T12:25:01.962Z",
+        "eventType": "button_clicked",
+        "detail": {
+          "label": "🕒 3:00 PM Slot",
+          "action": "campus_book_0300"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T12:24:58.944Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "campus_visit"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T12:24:58.641Z",
+        "eventType": "button_clicked",
+        "detail": {
+          "label": "🏫 Book Campus & Clinic Visit",
+          "action": "campus_visit"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T12:24:53.544Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "clinical_services"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T12:24:53.235Z",
+        "eventType": "button_clicked",
+        "detail": {
+          "label": "🏥 Clinical Services & OPD",
+          "action": "clinical_services"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T12:24:47.446Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:07:34.711Z",
+        "eventType": "inactivity_prompt_shown",
+        "detail": {}
+      },
+      {
+        "timestamp": "2026-10-06T10:05:34.690Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "campus_book_1030"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:34.374Z",
+        "eventType": "button_clicked",
+        "detail": {
+          "label": "🕥 10:30 AM Slot",
+          "action": "campus_book_1030"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:29.690Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "campus_visit"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:29.373Z",
+        "eventType": "button_clicked",
+        "detail": {
+          "label": "🏫 Book Campus Visit",
+          "action": "campus_visit"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:25.789Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "contact"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:25.486Z",
+        "eventType": "button_clicked",
+        "detail": {
+          "label": "📞 Contact Us",
+          "action": "contact"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:21.272Z",
+        "eventType": "flow_navigated",
+        "detail": {
+          "flowId": "welcome"
+        }
+      },
+      {
+        "timestamp": "2026-10-06T10:05:20.972Z",
+        "eventType": "chat_opened",
+        "detail": {}
+      }
+    ]
+  }
+}

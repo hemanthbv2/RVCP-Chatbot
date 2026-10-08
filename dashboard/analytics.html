@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics & Funnel — RVCP Chatbot Analytics</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Top Bar Header -->
+    <header class="header">
+      <div class="brand-section">
+        <div class="brand-logo">
+          <img src="../logo.png" alt="RVCP Logo">
+        </div>
+        <div>
+          <div class="brand-title">RV College of Physiotherapy</div>
+          <div class="brand-subtitle">Conversion Funnel & Engagement Intelligence</div>
+        </div>
+      </div>
+      <div class="status-badge">
+        <span class="status-pulse"></span>
+        Analytics Active
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-link">📊 Command Center</a>
+      <a href="leads.html" class="nav-link">🎯 Leads Stream</a>
+      <a href="sessions.html" class="nav-link">👥 Visitor Sessions</a>
+      <a href="interactions.html" class="nav-link">💬 Chat Interactions</a>
+      <a href="analytics.html" class="nav-link active">📈 Analytics & Funnel</a>
+      <a href="../index.html" target="_blank" class="nav-link" style="margin-left: auto;">💬 Test Live Chatbot ↗</a>
+    </nav>
+
+    <!-- Funnel Breakdown Card -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-title">
+          <span>⚡ Conversion Funnel</span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px; text-align: center;">
+          <div style="font-size: 13px; color: var(--text-secondary); text-transform: uppercase; font-weight: 600;">1. Total Visitor Sessions</div>
+          <div style="font-size: 38px; font-weight: 800; color: #fff; margin: 10px 0;" id="funnelSessions">0</div>
+          <div style="font-size: 12px; color: var(--text-muted);">Chatbot initialized & opened</div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px; text-align: center;">
+          <div style="font-size: 13px; color: var(--text-secondary); text-transform: uppercase; font-weight: 600;">2. Engaged Interactors</div>
+          <div style="font-size: 38px; font-weight: 800; color: #60A5FA; margin: 10px 0;" id="funnelInteractions">0</div>
+          <div style="font-size: 12px; color: var(--text-muted);">Clicked buttons or typed queries</div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px; text-align: center;">
+          <div style="font-size: 13px; color: var(--text-secondary); text-transform: uppercase; font-weight: 600;">3. Leads Captured</div>
+          <div style="font-size: 38px; font-weight: 800; color: var(--accent-primary); margin: 10px 0;" id="funnelLeads">0</div>
+          <div style="font-size: 12px; color: #34D399; font-weight: 600;">Overall Conversion: <span id="funnelRate">0.0%</span></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Two-Column Breakdown -->
+    <div class="two-col-equal">
+      
+      <!-- Form Types Breakdown -->
+      <section class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <span>📋 Enquiries by Lead Form Type</span>
+          </div>
+        </div>
+        <div id="formTypesContainer" style="display: flex; flex-direction: column; gap: 14px;">
+          <div class="empty-state">Loading form distributions...</div>
+        </div>
+      </section>
+
+      <!-- Programme Split & Key Takeaways -->
+      <section class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <span>🎓 Academic Programme Interest</span>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 6px;">
+              <span>Bachelor of Physiotherapy (BPT — 4.5 Years)</span>
+              <strong id="progBpt">0</strong>
+            </div>
+            <div style="background: rgba(255,255,255,0.06); height: 10px; border-radius: 5px; overflow: hidden;">
+              <div id="progBptBar" style="background: var(--accent-primary); width: 0%; height: 100%;"></div>
+            </div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 6px;">
+              <span>Master of Physiotherapy (MPT — 2 Years)</span>
+              <strong id="progMpt">0</strong>
+            </div>
+            <div style="background: rgba(255,255,255,0.06); height: 10px; border-radius: 5px; overflow: hidden;">
+              <div id="progMptBar" style="background: #3B82F6; width: 0%; height: 100%;"></div>
+            </div>
+          </div>
+
+          <div style="margin-top: 16px; padding: 16px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">
+            <div style="font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 6px;">💡 Admissions Intelligence Insights</div>
+            <ul style="font-size: 13px; color: var(--text-secondary); padding-left: 20px; line-height: 1.6;">
+              <li>BPT fee enquiry and ₹2 Lakh scholarship questions represent the highest inquiry traffic.</li>
+              <li>Candidates requesting campus visits prefer the 12:00 PM and 10:30 AM slots.</li>
+              <li>Dual-channel delivery routes leads to both the RVCP dashboard and Google Sheets in real-time.</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+
+  </div>
+
+  <script src="dashboard.js"></script>
+  <script>
+    async function loadAnalytics() {
+      const data = await fetchDashboardData('/api/dashboard/analytics');
+      if (!data) return;
+
+      document.getElementById('funnelSessions').textContent = data.totalSessions;
+      document.getElementById('funnelInteractions').textContent = data.totalInteractions;
+      document.getElementById('funnelLeads').textContent = data.totalLeads;
+      document.getElementById('funnelRate').textContent = data.conversionRate;
+
+      // Form Types
+      const ftContainer = document.getElementById('formTypesContainer');
+      const counts = data.formTypeCounts || {};
+      const entries = Object.entries(counts);
+
+      if (entries.length === 0) {
+        ftContainer.innerHTML = `<div class="empty-state">No leads recorded yet to display distribution.</div>`;
+      } else {
+        const totalLeads = Math.max(1, data.totalLeads);
+        ftContainer.innerHTML = entries.map(([type, count]) => {
+          const pct = Math.round((count / totalLeads) * 100);
+          return `
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px;">
+                <span>${escapeHtml(type)}</span>
+                <strong>${count} (${pct}%)</strong>
+              </div>
+              <div style="background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
+                <div style="background: #10B981; width: ${pct}%; height: 100%;"></div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Programme counts
+      const bpt = data.programmeCounts ? data.programmeCounts['BPT'] || 0 : 0;
+      const mpt = data.programmeCounts ? data.programmeCounts['MPT'] || 0 : 0;
+      const progTotal = Math.max(1, bpt + mpt);
+      document.getElementById('progBpt').textContent = bpt;
+      document.getElementById('progMpt').textContent = mpt;
+      document.getElementById('progBptBar').style.width = ((bpt / progTotal) * 100) + '%';
+      document.getElementById('progMptBar').style.width = ((mpt / progTotal) * 100) + '%';
+    }
+
+    loadAnalytics();
+    setInterval(loadAnalytics, 15000);
+  </script>
+</body>
+</html>

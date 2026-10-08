@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sessions — RVCP Chatbot Analytics</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👥</text></svg>">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Top Bar Header -->
+    <header class="header">
+      <div class="brand-section">
+        <div class="brand-logo">
+          <img src="../logo.png" alt="RVCP Logo">
+        </div>
+        <div>
+          <div class="brand-title">RV College of Physiotherapy</div>
+          <div class="brand-subtitle">Visitor Journey & Session Tracking</div>
+        </div>
+      </div>
+      <div class="status-badge">
+        <span class="status-pulse"></span>
+        Live Stream Active
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-link">📊 Command Center</a>
+      <a href="leads.html" class="nav-link">🎯 Leads Stream</a>
+      <a href="sessions.html" class="nav-link active">👥 Visitor Sessions</a>
+      <a href="interactions.html" class="nav-link">💬 Chat Interactions</a>
+      <a href="analytics.html" class="nav-link">📈 Analytics & Funnel</a>
+      <a href="../index.html" target="_blank" class="nav-link" style="margin-left: auto;">💬 Test Live Chatbot ↗</a>
+    </nav>
+
+    <!-- Sessions Card -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-title">
+          <span>👥 Unique Visitor Sessions (<span id="sessionCountBadge">0</span>)</span>
+        </div>
+        <span class="refresh-indicator" id="statusText">Live tracking</span>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Session ID</th>
+              <th>Session Started</th>
+              <th>Last Active</th>
+              <th>Total Events</th>
+              <th>Conversion Outcome</th>
+              <th>Recent Actions</th>
+            </tr>
+          </thead>
+          <tbody id="sessionsTableBody">
+            <tr>
+              <td colspan="6" class="empty-state">Loading visitor sessions...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="dashboard.js"></script>
+  <script>
+    async function loadSessions() {
+      const data = await fetchDashboardData('/api/dashboard/sessions');
+      const tbody = document.getElementById('sessionsTableBody');
+      const countBadge = document.getElementById('sessionCountBadge');
+
+      if (!data || data.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="empty-state">No visitor sessions recorded yet. Engage with the chatbot to see sessions stream in real-time.</td></tr>`;
+        countBadge.textContent = '0';
+        return;
+      }
+
+      countBadge.textContent = data.length;
+      tbody.innerHTML = data.map(s => {
+        const eventsPreview = (s.events || []).slice(0, 3).map(e => {
+          let desc = e.eventType;
+          if (e.detail && e.detail.text) desc += `: "${e.detail.text}"`;
+          else if (e.detail && e.detail.label) desc += `: "${e.detail.label}"`;
+          else if (e.detail && e.detail.flowId) desc += `: ${e.detail.flowId}`;
+          return `<span style="display: inline-block; background: rgba(255,255,255,0.04); padding: 2px 6px; border-radius: 4px; font-size: 11px; margin-right: 4px;">${escapeHtml(desc)}</span>`;
+        }).join('');
+
+        return `
+          <tr>
+            <td class="mono"><strong>${escapeHtml(s.sessionId)}</strong></td>
+            <td class="mono">${formatDate(s.startedAt)}</td>
+            <td class="mono">${formatDate(s.lastActive)}</td>
+            <td><strong>${s.eventCount || 1}</strong> events</td>
+            <td>
+              ${s.hasLead 
+                ? '<span class="badge badge-new">🎯 Lead Converted</span>' 
+                : '<span class="badge badge-type">👀 Browsing Visitor</span>'}
+            </td>
+            <td>${eventsPreview || '-'}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    loadSessions();
+    setInterval(loadSessions, 15000);
+  </script>
+</body>
+</html>

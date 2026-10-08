@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Command Center — RVCP Chatbot Analytics</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Top Bar Header -->
+    <header class="header">
+      <div class="brand-section">
+        <div class="brand-logo">
+          <img src="../logo.png" alt="RVCP Logo">
+        </div>
+        <div>
+          <div class="brand-title">RV College of Physiotherapy</div>
+          <div class="brand-subtitle">Chatbot Intelligence & Lead Command Center</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <span class="refresh-indicator" id="lastUpdated">Updated just now</span>
+        <div class="status-badge">
+          <span class="status-pulse"></span>
+          Telemetry Engine Online
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <a href="index.html" class="nav-link active">📊 Command Center</a>
+      <a href="leads.html" class="nav-link">🎯 Leads Stream</a>
+      <a href="sessions.html" class="nav-link">👥 Visitor Sessions</a>
+      <a href="interactions.html" class="nav-link">💬 Chat Interactions</a>
+      <a href="analytics.html" class="nav-link">📈 Analytics & Funnel</a>
+      <a href="../index.html" target="_blank" class="nav-link" style="margin-left: auto;">💬 Test Live Chatbot ↗</a>
+    </nav>
+
+    <!-- Key Performance Metrics (KPI Cards) -->
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-label">Total Leads</span>
+          <div class="kpi-icon">🎯</div>
+        </div>
+        <div class="kpi-value" id="kpiLeads">0</div>
+        <div class="kpi-subtext">Verified admissions submissions</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-label">Active Sessions</span>
+          <div class="kpi-icon">👥</div>
+        </div>
+        <div class="kpi-value" id="kpiSessions">0</div>
+        <div class="kpi-subtext">Unique chatbot engagements</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-label">Conversion Rate</span>
+          <div class="kpi-icon">⚡</div>
+        </div>
+        <div class="kpi-value" id="kpiConversion">0.0%</div>
+        <div class="kpi-subtext">Visitor to lead submission</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-label">Total Interactions</span>
+          <div class="kpi-icon">💬</div>
+        </div>
+        <div class="kpi-value" id="kpiInteractions">0</div>
+        <div class="kpi-subtext">Events, clicks & queries logged</div>
+      </div>
+    </section>
+
+    <!-- Quick Programme & Recent Stream Grid -->
+    <div class="two-col-grid">
+      
+      <!-- Recent Leads Feed -->
+      <section class="card" style="margin-bottom: 0;">
+        <div class="card-header">
+          <div class="card-title">
+            <span>🎯 Recent Student Enquiries</span>
+          </div>
+          <a href="leads.html" class="btn btn-secondary" style="font-size: 12px; padding: 6px 12px;">View All Leads →</a>
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Date / Time</th>
+                <th>Candidate</th>
+                <th>Phone</th>
+                <th>Programme</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody id="recentLeadsBody">
+              <tr>
+                <td colspan="5" class="empty-state">Loading leads data...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Programme Split Card -->
+      <section class="card" style="margin-bottom: 0;">
+        <div class="card-header">
+          <div class="card-title">
+            <span>🎓 Inquiry Distribution</span>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 16px; padding-top: 8px;">
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 13.5px; margin-bottom: 6px;">
+              <span>Bachelor of Physiotherapy (BPT)</span>
+              <strong id="bptCount">0</strong>
+            </div>
+            <div style="background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
+              <div id="bptBar" style="background: var(--accent-primary); width: 0%; height: 100%; transition: width 0.5s ease;"></div>
+            </div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 13.5px; margin-bottom: 6px;">
+              <span>Master of Physiotherapy (MPT)</span>
+              <strong id="mptCount">0</strong>
+            </div>
+            <div style="background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
+              <div id="mptBar" style="background: #3B82F6; width: 0%; height: 100%; transition: width 0.5s ease;"></div>
+            </div>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px; margin-top: 12px;">
+            <div style="font-size: 12.5px; color: var(--text-secondary); margin-bottom: 4px;">Top Specialisation Focus</div>
+            <div style="font-size: 14px; font-weight: 700; color: #fff;">Musculoskeletal & Sports Sciences</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Live Telemetry Stream -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-title">
+          <span>⚡ Live Real-Time Telemetry Feed</span>
+        </div>
+        <a href="interactions.html" class="btn btn-secondary" style="font-size: 12px; padding: 6px 12px;">Full Interaction Log →</a>
+      </div>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Session ID</th>
+              <th>Event Type</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody id="recentInteractionsBody">
+            <tr>
+              <td colspan="4" class="empty-state">Loading telemetry events...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="dashboard.js"></script>
+  <script>
+    async function loadOverview() {
+      const analytics = await fetchDashboardData('/api/dashboard/analytics');
+      const leads = await fetchDashboardData('/api/dashboard/leads');
+      const interactions = await fetchDashboardData('/api/dashboard/interactions');
+
+      if (analytics) {
+        document.getElementById('kpiLeads').textContent = analytics.totalLeads;
+        document.getElementById('kpiSessions').textContent = analytics.totalSessions;
+        document.getElementById('kpiConversion').textContent = analytics.conversionRate;
+        document.getElementById('kpiInteractions').textContent = analytics.totalInteractions;
+
+        const bpt = analytics.programmeCounts ? analytics.programmeCounts['BPT'] || 0 : 0;
+        const mpt = analytics.programmeCounts ? analytics.programmeCounts['MPT'] || 0 : 0;
+        const total = Math.max(1, bpt + mpt);
+        document.getElementById('bptCount').textContent = bpt;
+        document.getElementById('mptCount').textContent = mpt;
+        document.getElementById('bptBar').style.width = ((bpt / total) * 100) + '%';
+        document.getElementById('mptBar').style.width = ((mpt / total) * 100) + '%';
+      }
+
+      // Populate recent leads
+      const leadsBody = document.getElementById('recentLeadsBody');
+      if (leads && leads.length > 0) {
+        leadsBody.innerHTML = leads.slice(0, 5).map(l => `
+          <tr>
+            <td class="mono">${formatDate(l.timestamp)}</td>
+            <td><strong>${escapeHtml(l.name)}</strong></td>
+            <td><a href="tel:${escapeHtml(l.phone)}" style="color: var(--accent-primary); text-decoration: none;">${escapeHtml(l.phone)}</a></td>
+            <td><span class="badge badge-programme">${escapeHtml(l.programme || 'Physiotherapy')}</span></td>
+            <td><span class="badge badge-type">${escapeHtml(l.formType)}</span></td>
+          </tr>
+        `).join('');
+      } else {
+        leadsBody.innerHTML = `<tr><td colspan="5" class="empty-state">No leads captured yet. Submissions from the chatbot will appear here in real-time.</td></tr>`;
+      }
+
+      // Populate recent interactions
+      const interactionsBody = document.getElementById('recentInteractionsBody');
+      if (interactions && interactions.length > 0) {
+        interactionsBody.innerHTML = interactions.slice(0, 8).map(i => {
+          let detail = '-';
+          if (i.eventType === 'user_message') detail = `💬 User said: "${escapeHtml(i.data.text)}"`;
+          else if (i.eventType === 'button_clicked') detail = `👉 Clicked: "${escapeHtml(i.data.label)}"`;
+          else if (i.eventType === 'flow_navigated') detail = `🧭 Navigated to flow: ${escapeHtml(i.data.flowId)}`;
+          else if (i.eventType === 'lead_submitted') detail = `🎯 Submitted ${escapeHtml(i.data.formType)} for ${escapeHtml(i.data.name)}`;
+          else if (i.eventType === 'unmatched_query') detail = `⚠️ Unmatched query: "${escapeHtml(i.data.text)}"`;
+          else detail = JSON.stringify(i.data || {});
+
+          return `
+            <tr>
+              <td class="mono">${formatDate(i.timestamp)}</td>
+              <td class="mono" style="color: var(--text-muted);">${escapeHtml(i.sessionId)}</td>
+              <td><span class="badge badge-type">${escapeHtml(i.eventType)}</span></td>
+              <td>${detail}</td>
+            </tr>
+          `;
+        }).join('');
+      } else {
+        interactionsBody.innerHTML = `<tr><td colspan="4" class="empty-state">No telemetry events logged yet.</td></tr>`;
+      }
+
+      document.getElementById('lastUpdated').textContent = 'Updated ' + new Date().toLocaleTimeString('en-IN');
+    }
+
+    loadOverview();
+    setInterval(loadOverview, 15000); // Live poll every 15s
+  </script>
+</body>
+</html>
