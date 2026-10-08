@@ -12,7 +12,9 @@ app.use(express.json());
 // Serve static chatbot assets from root and dashboard assets from /dashboard
 const rootDir = path.resolve(__dirname, '..');
 const dashboardDir = path.join(rootDir, 'dashboard');
-const dataDir = path.join(rootDir, 'data');
+const isServerless = !!(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+const dataDir = isServerless ? '/tmp' : path.join(rootDir, 'data');
+const bundledDataDir = path.join(rootDir, 'data');
 
 if (!fs.existsSync(dataDir)) {
     try { fs.mkdirSync(dataDir, { recursive: true }); } catch (_) {}
@@ -21,12 +23,16 @@ if (!fs.existsSync(dataDir)) {
 app.use(express.static(rootDir));
 app.use('/dashboard', express.static(dashboardDir));
 
-// Helper for local file persistence
+// Helper for local file persistence (checks writable dataDir first, then bundled data)
 const readDataFile = (filename, defaultValue = []) => {
     try {
         const filePath = path.join(dataDir, filename);
         if (fs.existsSync(filePath)) {
             return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        }
+        const bundledPath = path.join(bundledDataDir, filename);
+        if (fs.existsSync(bundledPath)) {
+            return JSON.parse(fs.readFileSync(bundledPath, 'utf8'));
         }
     } catch (_) {}
     return defaultValue;
@@ -283,6 +289,15 @@ app.post('/send-counsellor', sendLeadEmail);
 app.post('/send-book-counselling', sendLeadEmail);
 app.post('/send-lead', sendLeadEmail);
 
+// Explicit API info route
+app.get('/api', (req, res) => {
+    res.json({
+        status: 'online',
+        service: 'RVCP Chatbot & Telemetry Engine',
+        version: '1.0.0'
+    });
+});
+
 // Fallback for unhandled POST requests
 app.use((req, res, next) => {
     if (req.method === 'POST') {
@@ -291,12 +306,5 @@ app.use((req, res, next) => {
     next();
 });
 
-const PORT = process.env.PORT || 3000;
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT, () => {
-        console.log(`RVCP Backend & Telemetry Server running on http://localhost:${PORT}`);
-        console.log(`Dashboard accessible at http://localhost:${PORT}/dashboard`);
-    });
-}
-
+// Export Express app for Vercel Serverless
 module.exports = app;
