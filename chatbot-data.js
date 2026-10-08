@@ -229,17 +229,14 @@ const CHAT_FLOWS = {
   // Welcome / Root flow
   welcome: {
     messages: [
-      { text: `Hello! 👋\nWelcome to <strong>RV College of Physiotherapy (RVCP)</strong> – <a href="https://www.google.com/maps/search/?api=1&query=RV+College+of+Physiotherapy+Jayanagar+Bengaluru" target="_blank">Jayanagar, Bengaluru</a>.`, delay: 350 },
-      { text: `We offer premier <strong>BPT (Bachelor of Physiotherapy)</strong> and <strong>MPT (Master of Physiotherapy)</strong> programmes affiliated to <strong>RGUHS</strong>.`, delay: 700 },
-      { text: `🎓 <strong>Admissions Open for Academic Year 2026-2027</strong>\nMerit Scholarships available up to <strong>₹2,00,000</strong>!`, delay: 500 },
-      { text: `How can we help you today? Please choose an option below:`, delay: 300 }
+      { text: `Hello! 👋 Welcome to <strong>RV College of Physiotherapy (RVCP)</strong>, Bengaluru.\n\n🎓 <strong>Admissions Open 2026–2027</strong> | RGUHS Affiliated\n💰 Merit Scholarships up to <strong>₹2,00,000</strong>!\n\nHow can we help you today? Please choose an option below:`, delay: 350 }
     ],
     buttons: [
       { label: "🎓 BPT (Bachelor of Physiotherapy)", action: "bpt_main" },
       { label: "📚 MPT (Master of Physiotherapy)", action: "mpt_main" },
-      { label: "💰 Scholarships (Up to ₹2 Lakhs)", action: "scholarships" },
+      { label: "💰 Scholarships (Up to ₹2L)", action: "scholarships" },
       { label: "🏥 Clinical Services & OPD", action: "clinical_services" },
-      { label: "🏠 Hostel Details & Fees", action: "hostel_details" },
+      { label: "🏠 Hostel & Fees", action: "hostel_details" },
       { label: "🏫 Book Campus Visit", action: "campus_visit" },
       { label: "ℹ️ About RVCP", action: "about" },
       { label: "📞 Contact Us", action: "contact" }
@@ -249,24 +246,21 @@ const CHAT_FLOWS = {
   // ─── BPT Flow ────────────────────────────────────────────────
   bpt_main: {
     messages: [
-      { text: `Great choice! 👍`, delay: 250 },
-      { text: `<strong>🎓 Bachelor of Physiotherapy (BPT) — 4.5 Years</strong>\n\n⏱️ <strong>Duration:</strong> 4 Years Academic + 6 Months Compulsory Rotatory Clinical Internship\n🏛️ <strong>Affiliated to:</strong> Rajiv Gandhi University of Health Sciences (RGUHS)\n📍 <strong>Location:</strong> <a href="https://www.google.com/maps/search/?api=1&query=RV+College+of+Physiotherapy+Jayanagar+Bengaluru" target="_blank">Jayanagar 4th Block, Bengaluru</a>\n🏥 <strong>Clinical Posting:</strong> Real-world experience at Speciality OPD & Top Partner Hospitals\n💰 <strong>Scholarships:</strong> Up to ₹2 Lakh for PCB merit students`, delay: 550 },
-      { text: `What would you like to explore regarding BPT?`, delay: 300 }
+      { text: `<strong>🎓 Bachelor of Physiotherapy (BPT) — 4.5 Years</strong>\n\n⏱️ <strong>Duration:</strong> 4 Years + 6 Months Internship\n🏛️ <strong>Affiliation:</strong> RGUHS | Jayanagar 4th Block, Bengaluru\n💰 <strong>Scholarships:</strong> Up to ₹2 Lakh for PCB merit students\n🏥 <strong>Clinical Posting:</strong> Speciality OPD & Top Hospitals\n\nWhat would you like to explore?`, delay: 350 }
     ],
     buttons: [
       { label: "📋 Eligibility Criteria", action: "bpt_eligibility" },
       { label: "💰 Fee & Scholarship Enquiry", action: "fee_enquiry_bpt" },
       { label: "📈 Career Opportunities", action: "bpt_career" },
       { label: "📑 Documents Required", action: "bpt_documents" },
-      { label: "📞 Talk to Admission Counsellor", action: "talk_to_counsellor" },
+      { label: "📞 Talk to Counsellor", action: "talk_to_counsellor" },
       { label: "← Back to Main Menu", action: "welcome" }
     ]
   },
 
   bpt_eligibility: {
     messages: [
-      { text: `<strong>📋 BPT — Eligibility Criteria</strong>\n\n✅ <strong>Academic Qualification:</strong> Pass in 10+2 / PUC / Higher Secondary or approved equivalent board.\n✅ <strong>Core Subjects:</strong> Physics, Chemistry, and Biology (PCB) with English.\n✅ <strong>Minimum Marks:</strong>\n• General Category: <strong>Minimum 40%</strong> aggregate in PCB.\n• SC / ST Category: <strong>Minimum 35%</strong> aggregate in PCB.\n• NCAHP guideline: Minimum 50% in aggregate PCB with NEET appearance.\n✅ <strong>Age Limit:</strong> Must have attained at least <strong>17 years</strong> of age as on the admission date.`, delay: 600 },
-      { text: `Would you like to enquire about fee structure or book a campus tour?`, delay: 350 }
+      { text: `<strong>📋 BPT — Eligibility Criteria</strong>\n\n✅ <strong>Qualification:</strong> Pass in 10+2 / PUC with Physics, Chemistry & Biology (PCB) with English.\n✅ <strong>Minimum Marks:</strong>\n• General: <strong>40% aggregate</strong> in PCB\n• SC / ST: <strong>35% aggregate</strong> in PCB\n• NCAHP guideline: 50% aggregate + NEET appearance\n✅ <strong>Age:</strong> Minimum <strong>17 years</strong> as on admission date.`, delay: 350 }
     ],
     buttons: [
       { label: "💰 Fee & Scholarship Enquiry", action: "fee_enquiry_bpt" },
@@ -279,8 +273,7 @@ const CHAT_FLOWS = {
 
   bpt_career: {
     messages: [
-      { text: `<strong>📈 Career Scope after BPT</strong>\n\nPhysiotherapists enjoy high global demand across diverse healthcare sectors:\n\n• <strong>Hospitals & ICUs:</strong> Multi-speciality & super-speciality clinical roles\n• <strong>Sports & Fitness:</strong> Sports teams, IPL, national athletic squads, high-performance centres\n• <strong>Specialised Rehabilitation:</strong> Stroke, neuro-rehab, spine, joint replacement centres\n• <strong>Paediatric Therapy:</strong> High-risk infant clinics & child development centres\n• <strong>Corporate Wellness:</strong> Ergonomic consultant for multinational IT corporations\n• <strong>Private Practice:</strong> Independent clinical consultation & rehabilitation centres\n• <strong>Overseas Opportunities:</strong> Highly rewarding careers in USA, UK, Canada, Australia, Middle East\n• <strong>Higher Studies:</strong> MPT, fellowships, Ph.D. in specialized sciences`, delay: 600 },
-      { text: `Would you like our admission counsellor to guide you on admissions?`, delay: 350 }
+      { text: `<strong>📈 Career Scope after BPT</strong>\n\n• <strong>High Demand Roles:</strong> Hospitals & ICUs, Sports Physiotherapist (IPL/National squads), Stroke & Spine Rehab, Paediatric Clinics, Corporate Ergonomics & Private Practice.\n• <strong>Global Opportunities:</strong> USA, UK, Canada, Australia & Gulf.\n• <strong>Starting Packages:</strong> ₹4.5 LPA – ₹9 LPA (₹15+ LPA for specialists).`, delay: 350 }
     ],
     buttons: [
       { label: "📞 Request Counsellor Callback", action: "talk_to_counsellor" },
@@ -292,7 +285,7 @@ const CHAT_FLOWS = {
 
   bpt_documents: {
     messages: [
-      { text: `<strong>📑 Documents Required for BPT Admission</strong>\n\n1. 10th Standard Marks Card (Original + 2 Xerox copies)\n2. 12th / PUC Marks Card (Original + 2 Xerox copies)\n3. Aadhaar Card (Xerox copy)\n4. Transfer Certificate (TC) or Migration Certificate (Original)\n5. Passport size photographs (35 x 45 mm, max 20 KB)\n6. Eligibility Certificate from RGUHS (for students from CBSE, ICSE, or outside Karnataka)\n\n📅 <strong>Commencement:</strong> Mid-September as per RGUHS Academic Calendar.`, delay: 550 }
+      { text: `<strong>📑 Documents Required for BPT Admission</strong>\n\n1. 10th & 12th / PUC Marks Cards (Original + 2 copies)\n2. Aadhaar Card (Copy)\n3. Transfer Certificate (TC) or Migration Certificate (Original)\n4. Passport size photos (35 x 45 mm)\n5. RGUHS Eligibility Certificate (for CBSE, ICSE, or outside Karnataka)\n\n📅 <strong>Batch Commencement:</strong> Mid-September (RGUHS Calendar).`, delay: 350 }
     ],
     buttons: [
       { label: "💰 Fee & Scholarship Enquiry", action: "fee_enquiry_bpt" },
@@ -305,7 +298,7 @@ const CHAT_FLOWS = {
   // ─── Fee Enquiry BPT ─────────────────────────────────────────
   fee_enquiry_bpt: {
     messages: [
-      { text: `<strong>💰 BPT Fee & Scholarship Enquiry</strong>\n\nThank you for your interest! Our admissions team provides detailed fee breakdowns, installment schedules, and confirms your eligibility for up to <strong>₹2 Lakh merit scholarship</strong>.\n\nPlease share your details below:`, delay: 450 }
+      { text: `<strong>💰 BPT Fee & Scholarship Enquiry</strong>\n\nShare your details to receive official fee breakdowns and check eligibility for up to <strong>₹2 Lakh merit scholarship</strong>:`, delay: 350 }
     ],
     form: {
       id: "fee_enquiry",
@@ -317,7 +310,7 @@ const CHAT_FLOWS = {
         { name: "city", label: "Current City", type: "text", placeholder: "Your city", required: true }
       ],
       submitLabel: "Submit BPT Enquiry 📩",
-      successMessage: `Thank you! ✅ Your BPT enquiry has been received. Our admissions counsellor will call you within <strong>30 minutes</strong> with the fee details and scholarship eligibility.\n\n📞 Immediate Assistance: <strong>${RVCP_DATA.college.phone.office}</strong>`
+      successMessage: `Thank you! ✅ Your BPT enquiry has been received. Our admissions counsellor will call you within <strong>30 minutes</strong> with fee details and scholarship eligibility.\n\n📞 Immediate Assistance: <strong>${RVCP_DATA.college.phone.office}</strong>`
     },
     buttons: [
       { label: "← Back to BPT", action: "bpt_main" },
@@ -328,23 +321,21 @@ const CHAT_FLOWS = {
   // ─── MPT Flow ────────────────────────────────────────────────
   mpt_main: {
     messages: [
-      { text: `<strong>Advance Your Physiotherapy Career! 🔬</strong>`, delay: 250 },
-      { text: `<strong>📚 Master of Physiotherapy (MPT) — 2 Years</strong>\n\n⏱️ <strong>Duration:</strong> 2 Years (4 Semesters)\n🏛️ <strong>Affiliated to:</strong> Rajiv Gandhi University of Health Sciences (RGUHS)\n🔬 <strong>6 Premier Specialisations Available</strong>\n🏥 <strong>Clinical Exposure:</strong> Advanced OPD case handling, super-speciality hospital postings, research publications`, delay: 550 },
-      { text: `Please select what you would like to know:`, delay: 300 }
+      { text: `<strong>📚 Master of Physiotherapy (MPT) — 2 Years</strong>\n\n⏱️ <strong>Duration:</strong> 2 Years (4 Semesters) | Affiliated to RGUHS\n🔬 <strong>6 Premier Specialisations Offered</strong>\n🏥 <strong>Clinical Exposure:</strong> Speciality OPD, super-speciality hospital postings & research.\n\nPlease select what you would like to know:`, delay: 350 }
     ],
     buttons: [
       { label: "🔬 6 Specialisations Offered", action: "mpt_specializations" },
-      { label: "📋 Eligibility & Selection", action: "mpt_eligibility" },
+      { label: "📋 Eligibility Criteria", action: "mpt_eligibility" },
       { label: "💰 MPT Fee Enquiry", action: "fee_enquiry_mpt" },
       { label: "📑 Documents Required", action: "mpt_documents" },
-      { label: "📞 Book Priority MPT Counselling", action: "book_counselling" },
+      { label: "📞 Priority MPT Counselling", action: "book_counselling" },
       { label: "← Back to Main Menu", action: "welcome" }
     ]
   },
 
   mpt_specializations: {
     messages: [
-      { text: `<strong>🔬 MPT — 6 Specialisations Offered at RVCP:</strong>\n\n1. <strong>Musculoskeletal Sciences:</strong> Advanced joint mobilization, spinal manipulation, arthroplasty rehab, sports trauma (HOD: Dr. Paul Daniel V.K).\n\n2. <strong>Sports Sciences:</strong> Athlete assessment, biomechanics, pitch-side emergency management, sports conditioning.\n\n3. <strong>Neurological Sciences:</strong> Stroke rehabilitation, NDT, motor relearning, neuro-degenerative disorders (Dr. Trapthi Kamath).\n\n4. <strong>Paediatric Physiotherapy:</strong> Cerebral palsy, sensory integration, neonatal intensive care physiotherapy (HOD: Dr. Pallavi Wajapey).\n\n5. <strong>Community Health:</strong> Geriatric wellness, women's health, ergonomic workplace interventions, inclusive community rehab.\n\n6. <strong>Cardiovascular and Pulmonary Sciences:</strong> Cardiac rehabilitation, ICU ventilator weaning, pulmonary rehabilitation, thoracic surgical care.`, delay: 650 }
+      { text: `<strong>🔬 MPT — 6 Specialisations Offered at RVCP:</strong>\n\n1. <strong>Musculoskeletal Sciences:</strong> Orthopaedics, spine & joint replacement rehab\n2. <strong>Sports Sciences:</strong> Athletic assessment, biomechanics & sports conditioning\n3. <strong>Neurological Sciences:</strong> Stroke rehabilitation, NDT & spinal cord injury\n4. <strong>Paediatric Physiotherapy:</strong> Cerebral palsy, developmental delay & NICU\n5. <strong>Community Health:</strong> Geriatric wellness, women's health & ergonomics\n6. <strong>Cardiovascular & Pulmonary:</strong> Cardiac rehab & ICU ventilator care`, delay: 400 }
     ],
     buttons: [
       { label: "📋 Eligibility Criteria", action: "mpt_eligibility" },
@@ -357,7 +348,7 @@ const CHAT_FLOWS = {
 
   mpt_eligibility: {
     messages: [
-      { text: `<strong>📋 MPT — Eligibility Criteria</strong>\n\n✅ <strong>Educational Qualification:</strong> Candidates must have successfully completed Bachelor of Physiotherapy (BPT) from any UGC / RGUHS recognized university.\n✅ <strong>Mode of Study:</strong> Full-time regular BPT degree only (degrees obtained through correspondence or open universities are strictly ineligible).\n✅ <strong>Internship:</strong> Compulsory 6 months rotatory clinical internship completed.\n✅ <strong>Commencement:</strong> Scheduled mid-September as per RGUHS Academic Calendar.`, delay: 550 }
+      { text: `<strong>📋 MPT — Eligibility Criteria</strong>\n\n✅ <strong>Qualification:</strong> Full-time BPT from a UGC / RGUHS recognized university.\n✅ <strong>Internship:</strong> Completed 6-month compulsory rotatory clinical internship.\n✅ <strong>Registration:</strong> Registered with State Physiotherapy Council.\n\n📅 <strong>Commencement:</strong> Mid-September (RGUHS).`, delay: 350 }
     ],
     buttons: [
       { label: "🔬 View Specialisations", action: "mpt_specializations" },
@@ -369,7 +360,7 @@ const CHAT_FLOWS = {
 
   mpt_documents: {
     messages: [
-      { text: `<strong>📑 Documents Required for MPT Admission:</strong>\n\n1. 10th & 12th Marks Cards (Original)\n2. BPT All 4-Year Marks Cards (Original)\n3. 6-Month Compulsory Internship Completion Certificate (Original)\n4. PDC (Provisional Degree Certificate) and ODC (Original Degree Certificate)\n5. Transfer Certificate (TC) or Migration Certificate (Original)\n6. Aadhaar Card (Xerox copy)\n7. Eligibility Certificate from RGUHS (for students from universities other than RGUHS)`, delay: 550 }
+      { text: `<strong>📑 Documents Required for MPT Admission:</strong>\n\n1. 10th & 12th Marks Cards (Original)\n2. BPT All 4-Year Marks Cards (Original)\n3. 6-Month Internship Completion Certificate\n4. PDC & Degree Certificate (ODC)\n5. Transfer / Migration Certificate & Aadhaar Card\n6. RGUHS Eligibility Certificate (if outside RGUHS)`, delay: 350 }
     ],
     buttons: [
       { label: "💰 MPT Fee Enquiry", action: "fee_enquiry_mpt" },
@@ -381,7 +372,7 @@ const CHAT_FLOWS = {
 
   fee_enquiry_mpt: {
     messages: [
-      { text: `<strong>💰 Fee Enquiry — M.Sc. / MPT Physiotherapy</strong>\n\nTo receive the detailed MPT fee breakdown and specialisation quota availability, please share your details. Our PG counsellor will contact you within <strong>30 minutes</strong>.`, delay: 450 }
+      { text: `<strong>💰 MPT Fee Enquiry</strong>\n\nShare your details to receive the MPT fee breakdown and specialisation quota availability:`, delay: 350 }
     ],
     form: {
       id: "fee_enquiry_msc",
@@ -411,8 +402,7 @@ const CHAT_FLOWS = {
   // ─── Scholarships Flow ──────────────────────────────────────
   scholarships: {
     messages: [
-      { text: `<strong>⭐ Merit Scholarships at RVCP (Up to ₹2,00,000)</strong>\n\nRV College of Physiotherapy awards generous scholarships to encourage academic excellence:\n\n🥇 <strong>₹2,00,000 (2 Lakhs) Scholarship:</strong>\nFor students with Physics, Chemistry & Biology (PCB) score <strong>above 75%</strong> in 12th/PUC.\n\n🥈 <strong>₹1,00,000 (1 Lakh) Scholarship:</strong>\nFor students with PCB score between <strong>60% and 75%</strong> in 12th/PUC.\n\n🏛️ <strong>RSST Institutional & Government Scholarships:</strong>\nAdditional scholarships supported for eligible candidates through national and state portals.`, delay: 650 },
-      { text: `Would you like guidance on applying for the merit scholarship?`, delay: 350 }
+      { text: `<strong>⭐ Merit Scholarships at RVCP (Up to ₹2,00,000)</strong>\n\n🥇 <strong>₹2,00,000 (Tier 1):</strong> PCB score <strong>above 75%</strong> in 12th / PUC\n🥈 <strong>₹1,00,000 (Tier 2):</strong> PCB score between <strong>60% – 75%</strong> in 12th / PUC\n🏛️ <strong>RSST & Government Schemes:</strong> Deserving and welfare scholarships supported.\n\nWould you like guidance on applying?`, delay: 350 }
     ],
     buttons: [
       { label: "📝 Apply for Scholarship Guidance", action: "scholarship_apply" },
@@ -423,7 +413,7 @@ const CHAT_FLOWS = {
 
   scholarship_apply: {
     messages: [
-      { text: `<strong>📝 Scholarship Application Guidance</strong>\n\nPlease share your details so our scholarship cell can verify your eligibility and guide you through the process.`, delay: 400 }
+      { text: `<strong>📝 Scholarship Application Guidance</strong>\n\nPlease share your details so our scholarship cell can verify your eligibility and guide you through the process:`, delay: 350 }
     ],
     form: {
       id: "scholarship_apply",
@@ -445,11 +435,11 @@ const CHAT_FLOWS = {
   // ─── Clinical Services Flow ──────────────────────────────────
   clinical_services: {
     messages: [
-      { text: `<strong>🏥 Clinical Services & Training Facilities at RVCP</strong>\n\nRVCP operates specialized clinical suites providing superior patient care and unmatched clinical training:\n\n• <strong>Speciality Physiotherapy OPD:</strong> Full-fledged outpatient clinic serving diverse clinical populations daily.\n• <strong>Evening Speciality Clinic:</strong> Subsidized, high-standard community care with intensive PG clinical case management.\n• <strong>Specialised Focus Clinics:</strong>\n  - Shoulder Speciality Clinic\n  - Spine Rehabilitation & Manual Therapy\n  - High-Risk Infant & Paediatric Intervention\n  - Neuro-Rehabilitation (Stroke & Spinal Cord)\n  - Cardiopulmonary Conditioning\n• <strong>Hospital Affiliations:</strong> Clinical rotations in multi-speciality hospitals including Aster RV Hospital in Jayanagar.`, delay: 650 }
+      { text: `<strong>🏥 Clinical Services & Training at RVCP</strong>\n\n• <strong>Speciality OPD:</strong> Full-fledged daily outpatient physiotherapy care.\n• <strong>Evening Speciality Clinic:</strong> Subsidized community care & PG clinical training.\n• <strong>Focus Clinics:</strong> Shoulder, Spine, Neuro-Rehab, Paediatrics & Sports Injury.\n• <strong>Hospital Tie-ups:</strong> Postings at Aster RV Hospital & top multi-speciality centres.`, delay: 350 }
     ],
     buttons: [
-      { label: "🏫 Book Campus & Clinic Visit", action: "campus_visit" },
-      { label: "📞 Talk to Admission Counsellor", action: "talk_to_counsellor" },
+      { label: "🏫 Book Campus Visit", action: "campus_visit" },
+      { label: "📞 Talk to Counsellor", action: "talk_to_counsellor" },
       { label: "← Main Menu", action: "welcome" }
     ]
   },
@@ -457,7 +447,7 @@ const CHAT_FLOWS = {
   // ─── Hostel Flow ───────────────────────────────────────────
   hostel_details: {
     messages: [
-      { text: `<strong>🏠 RVCP Hostel Accommodation & Fees</strong>\n\nSafe, hygienic, and well-managed hostels located within the Jayanagar campus vicinity with 24/7 security, Wi-Fi, and nutritious dining:\n\n<strong>Annual Hostel Accommodation Fee:</strong>\n• 2 Sharing: <strong>₹ 48,300</strong>\n• 3 Sharing: <strong>₹ 47,250</strong>\n• 4 Sharing: <strong>₹ 46,200</strong>\n• Dormitory: <strong>₹ 36,750</strong>\n• Guest Room: ₹ 525/- per day (inclusive of GST)\n\n<strong>💰 Caution Deposit:</strong> ₹ 5,000 (One-time, refundable)\n<strong>🍽️ Mess Charges:</strong> ₹ 52,800 per year (Payable in two 6-month installments of ₹ 26,400).`, delay: 600 }
+      { text: `<strong>🏠 RVCP Hostel Accommodation & Fees (Annual)</strong>\n\n• <strong>2 Sharing:</strong> ₹ 48,300\n• <strong>3 Sharing:</strong> ₹ 47,250\n• <strong>4 Sharing:</strong> ₹ 46,200\n• <strong>Dormitory:</strong> ₹ 36,750\n• <strong>Caution Deposit:</strong> ₹ 5,000 (Refundable)\n• <strong>Mess Charges:</strong> ₹ 52,800/yr (₹ 26,400 per 6 months)\n• <strong>Guest Room:</strong> ₹ 525/day (incl. GST)\n\nSafe campus housing in Jayanagar with Wi-Fi, 24/7 security & nutritious dining.`, delay: 350 }
     ],
     buttons: [
       { label: "🏫 Book Campus & Hostel Visit", action: "campus_visit" },
@@ -469,7 +459,7 @@ const CHAT_FLOWS = {
   // ─── Campus Visit Flow ──────────────────────────────────────
   campus_visit: {
     messages: [
-      { text: `<strong>🏫 Visit RV College of Physiotherapy Campus</strong>\n\nWe would love to welcome you! Tour our state-of-the-art anatomy labs, electrotherapy suites, Speciality OPD, library, and interact directly with our faculty.\n\n📍 <strong>Location:</strong> <a href="https://www.google.com/maps/search/?api=1&query=RV+College+of+Physiotherapy+Jayanagar+Bengaluru" target="_blank">Jayanagar 4th Block, Bengaluru</a> (walking distance from metro).\n\nPlease choose your preferred visit time:`, delay: 500 }
+      { text: `<strong>🏫 Visit RVCP Campus</strong>\n\nTour our labs, Speciality OPD, and meet the faculty at Jayanagar 4th Block, Bengaluru.\n\nPlease select your preferred visit time:`, delay: 300 }
     ],
     buttons: [
       { label: "🕥 10:30 AM Slot", action: "campus_book_1030" },
@@ -481,7 +471,7 @@ const CHAT_FLOWS = {
 
   campus_book_1030: {
     messages: [
-      { text: `Great choice! You selected the <strong>10:30 AM</strong> slot. ⏰\n\nPlease share your details to confirm your visit:`, delay: 350 }
+      { text: `You selected the <strong>10:30 AM</strong> slot. ⏰\nPlease share your details to confirm your visit:`, delay: 300 }
     ],
     form: {
       id: "campus_visit_1030",
@@ -491,7 +481,7 @@ const CHAT_FLOWS = {
         { name: "email", label: "Email Address", type: "email", placeholder: "Enter your email", required: true }
       ],
       submitLabel: "Confirm 10:30 AM Visit ✅",
-      successMessage: `🎉 <strong>Campus visit booked for 10:30 AM!</strong>\n\n📍 <strong>Address:</strong> ${RVCP_DATA.college.address}\n\nOur admission reception will call you to confirm your arrival date. See you at RVCP! 🏫\n\n📞 Helpdesk: <strong>${RVCP_DATA.college.phone.office}</strong>`
+      successMessage: `🎉 <strong>Campus visit booked for 10:30 AM!</strong>\n\n📍 <strong>Address:</strong> ${RVCP_DATA.college.address}\n\nOur admission reception will call you to confirm arrival. See you at RVCP! 🏫\n\n📞 Helpdesk: <strong>${RVCP_DATA.college.phone.office}</strong>`
     },
     buttons: [
       { label: "← Main Menu", action: "welcome" }
@@ -500,7 +490,7 @@ const CHAT_FLOWS = {
 
   campus_book_1200: {
     messages: [
-      { text: `Great choice! You selected the <strong>12:00 PM</strong> slot. ⏰\n\nPlease share your details to confirm your visit:`, delay: 350 }
+      { text: `You selected the <strong>12:00 PM</strong> slot. ⏰\nPlease share your details to confirm your visit:`, delay: 300 }
     ],
     form: {
       id: "campus_visit_1200",
@@ -510,7 +500,7 @@ const CHAT_FLOWS = {
         { name: "email", label: "Email Address", type: "email", placeholder: "Enter your email", required: true }
       ],
       submitLabel: "Confirm 12:00 PM Visit ✅",
-      successMessage: `🎉 <strong>Campus visit booked for 12:00 PM!</strong>\n\n📍 <strong>Address:</strong> ${RVCP_DATA.college.address}\n\nOur admission reception will call you to confirm your arrival date. See you at RVCP! 🏫\n\n📞 Helpdesk: <strong>${RVCP_DATA.college.phone.office}</strong>`
+      successMessage: `🎉 <strong>Campus visit booked for 12:00 PM!</strong>\n\n📍 <strong>Address:</strong> ${RVCP_DATA.college.address}\n\nOur admission reception will call you to confirm arrival. See you at RVCP! 🏫\n\n📞 Helpdesk: <strong>${RVCP_DATA.college.phone.office}</strong>`
     },
     buttons: [
       { label: "← Main Menu", action: "welcome" }
@@ -519,7 +509,7 @@ const CHAT_FLOWS = {
 
   campus_book_0300: {
     messages: [
-      { text: `Great choice! You selected the <strong>3:00 PM</strong> slot. ⏰\n\nPlease share your details to confirm your visit:`, delay: 350 }
+      { text: `You selected the <strong>3:00 PM</strong> slot. ⏰\nPlease share your details to confirm your visit:`, delay: 300 }
     ],
     form: {
       id: "campus_visit_0300",
@@ -529,7 +519,7 @@ const CHAT_FLOWS = {
         { name: "email", label: "Email Address", type: "email", placeholder: "Enter your email", required: true }
       ],
       submitLabel: "Confirm 3:00 PM Visit ✅",
-      successMessage: `🎉 <strong>Campus visit booked for 3:00 PM!</strong>\n\n📍 <strong>Address:</strong> ${RVCP_DATA.college.address}\n\nOur admission reception will call you to confirm your arrival date. See you at RVCP! 🏫\n\n📞 Helpdesk: <strong>${RVCP_DATA.college.phone.office}</strong>`
+      successMessage: `🎉 <strong>Campus visit booked for 3:00 PM!</strong>\n\n📍 <strong>Address:</strong> ${RVCP_DATA.college.address}\n\nOur admission reception will call you to confirm arrival. See you at RVCP! 🏫\n\n📞 Helpdesk: <strong>${RVCP_DATA.college.phone.office}</strong>`
     },
     buttons: [
       { label: "← Main Menu", action: "welcome" }
@@ -539,7 +529,7 @@ const CHAT_FLOWS = {
   // ─── Talk to Admission Counsellor ────────────────────────────
   talk_to_counsellor: {
     messages: [
-      { text: `<strong>📞 Speak with an RVCP Admission Counsellor</strong>\n\nHave questions about cutoffs, fees, hospital rotations, or career pathways? Share your contact info and our senior counsellor will call you within <strong>30 minutes</strong>.`, delay: 450 }
+      { text: `<strong>📞 RVCP Admission Counselling</strong>\n\nHave questions about cutoffs, fees, or hospital postings? Share your contact info and our counsellor will call you within <strong>30 minutes</strong>:`, delay: 350 }
     ],
     form: {
       id: "talk_to_counsellor",
@@ -549,7 +539,7 @@ const CHAT_FLOWS = {
         { name: "email", label: "Email Address", type: "email", placeholder: "Enter your email address", required: true }
       ],
       submitLabel: "Request Callback 📞",
-      successMessage: `Thank you! ✅ Your callback request is received. An RVCP admission counsellor will call you within <strong>30 minutes</strong>.\n\n📞 Immediate Desk: <strong>${RVCP_DATA.college.phone.office}</strong>`
+      successMessage: `Thank you! ✅ Your callback request is received. An RVCP counsellor will call you within <strong>30 minutes</strong>.\n\n📞 Immediate Desk: <strong>${RVCP_DATA.college.phone.office}</strong>`
     },
     buttons: [
       { label: "🎓 BPT Programme", action: "bpt_main" },
@@ -561,7 +551,7 @@ const CHAT_FLOWS = {
   // ─── Book Counselling Session (MPT) ──────────────────────────
   book_counselling: {
     messages: [
-      { text: `<strong>📞 Book Priority MPT Counselling Session</strong>\n\nSchedule a one-on-one consultation with our postgraduate academic heads to review specialisation tracks, clinical case exposure, and research grants.`, delay: 450 }
+      { text: `<strong>📞 Priority MPT Counselling</strong>\n\nSchedule a 1-on-1 session with our academic heads for specialisation and clinical rotation guidance:`, delay: 350 }
     ],
     form: {
       id: "book_counselling",
@@ -590,7 +580,7 @@ const CHAT_FLOWS = {
   // ─── About RVCP ──────────────────────────────────────────────
   about: {
     messages: [
-      { text: `<strong>ℹ️ About RV College of Physiotherapy (RVCP)</strong>\n\n${RVCP_DATA.about.welcome}\n\n<strong>Why Choose RVCP?</strong>\n${RVCP_DATA.about.whyUs}\n\n🏛️ <strong>Trust:</strong> ${RVCP_DATA.college.trust}\n📅 <strong>Established:</strong> ${RVCP_DATA.college.established}\n🎓 <strong>Affiliated to:</strong> ${RVCP_DATA.college.affiliation}\n👨‍🏫 <strong>Principal:</strong> ${RVCP_DATA.college.leadership.principal.name}\n\n🌐 <a href="${RVCP_DATA.college.website}" target="_blank">Visit Official Website</a>`, delay: 650 }
+      { text: `<strong>ℹ️ About RV College of Physiotherapy (RVCP)</strong>\n\n• <strong>Established:</strong> 2003 under RSST (Est. 1940)\n• <strong>Affiliation:</strong> RGUHS | Recognised by Govt of Karnataka & NCAHP aligned\n• <strong>Principal:</strong> Dr. Pruthviraj R (PT), Dean at RGUHS\n• <strong>Location:</strong> Jayanagar 4th Block, Bengaluru\n• <strong>Highlights:</strong> 20+ years of excellence, in-house Speciality OPD, top hospital postings & scholarships up to ₹2L.\n\n🌐 <a href="${RVCP_DATA.college.website}" target="_blank">Visit rvcp.edu.in</a>`, delay: 350 }
     ],
     buttons: [
       { label: "🎓 BPT Programme", action: "bpt_main" },
@@ -604,10 +594,10 @@ const CHAT_FLOWS = {
   // ─── Contact ─────────────────────────────────────────────────
   contact: {
     messages: [
-      { text: `<strong>📞 Contact RV College of Physiotherapy</strong>\n\n📍 <strong>Address:</strong>\n${RVCP_DATA.college.address}\n\n📞 <strong>Phone:</strong> <a href="tel:${RVCP_DATA.college.phone.office}">${RVCP_DATA.college.phone.office}</a> / <a href="tel:${RVCP_DATA.college.phone.line2}">${RVCP_DATA.college.phone.line2}</a> / <a href="tel:${RVCP_DATA.college.phone.line3}">${RVCP_DATA.college.phone.line3}</a>\n✉️ <strong>Email:</strong> <a href="mailto:${RVCP_DATA.college.email}">${RVCP_DATA.college.email}</a>\n\n🌐 <strong>Website:</strong> <a href="${RVCP_DATA.college.website}" target="_blank">rvcp.edu.in</a>\n📝 <strong>Online Admission Application:</strong> <a href="${RVCP_DATA.college.admissionPortal}" target="_blank">RVCP Portal</a>\n\n🔗 <strong>Follow Us:</strong>\n<a href="${RVCP_DATA.college.social.facebook}" target="_blank">Facebook</a> · <a href="${RVCP_DATA.college.social.instagram}" target="_blank">Instagram</a> · <a href="${RVCP_DATA.college.social.twitter}" target="_blank">X (Twitter)</a> · <a href="${RVCP_DATA.college.social.linkedin}" target="_blank">LinkedIn</a>`, delay: 600 }
+      { text: `<strong>📞 Contact RV College of Physiotherapy</strong>\n\n📍 <strong>Address:</strong> ${RVCP_DATA.college.address}\n📞 <strong>Phone:</strong> <a href="tel:${RVCP_DATA.college.phone.office}">${RVCP_DATA.college.phone.office}</a> / <a href="tel:${RVCP_DATA.college.phone.line2}">${RVCP_DATA.college.phone.line2}</a>\n✉️ <strong>Email:</strong> <a href="mailto:${RVCP_DATA.college.email}">${RVCP_DATA.college.email}</a>\n🌐 <strong>Website:</strong> <a href="${RVCP_DATA.college.website}" target="_blank">rvcp.edu.in</a>`, delay: 350 }
     ],
     buttons: [
-      { label: "🏢 Department & Faculty Directory", action: "dept_contacts" },
+      { label: "🏢 Faculty & HOD Directory", action: "dept_contacts" },
       { label: "🏫 Book Campus Visit", action: "campus_visit" },
       { label: "← Main Menu", action: "welcome" }
     ]
@@ -615,7 +605,7 @@ const CHAT_FLOWS = {
 
   dept_contacts: {
     messages: [
-      { text: `<strong>🏢 Departments & Key Faculty at RVCP</strong>\n\n${RVCP_DATA.departments.map(d => `<strong>${d.name}</strong>\n👤 ${d.hod}\n👥 Faculty: ${d.faculty}`).join('\n\n')}`, delay: 600 }
+      { text: `<strong>🏢 Departments & HODs at RVCP:</strong>\n\n• <strong>Musculoskeletal:</strong> Dr. Paul Daniel V.K (PT), Prof & HOD\n• <strong>Sports Sciences:</strong> Dr. Stephiya Davis (PT), Lecturer & In-Charge\n• <strong>Neurological:</strong> Dr. Trapthi Kamath (PT), Asst Prof\n• <strong>Paediatrics:</strong> Dr. Pallavi Wajapey (PT), Asst Prof & HOD\n• <strong>Community Health:</strong> Dr. Sukrutha N (PT), Lecturer\n• <strong>Cardio-Pulmonary:</strong> Dr. Dokka Mani Chandrika (PT), Lecturer`, delay: 350 }
     ],
     buttons: [
       { label: "📞 General Contact", action: "contact" },
@@ -629,7 +619,7 @@ const FAQ_KNOWLEDGE = [
   {
     id: "faq_location",
     patterns: ["where is", "location", "locate", "located", "address", "how to reach", "directions", "landmark", "nearest metro", "bus stop", "jayanagar 4th block"],
-    answer: `📍 <strong>RV College of Physiotherapy Location:</strong>\n\n${RVCP_DATA.college.address}\n\n🚇 <strong>Commute Highlight:</strong> Just a minute's walk from Jayanagar bus terminus with rapid metro connectivity across Bengaluru!`,
+    answer: `📍 <strong>RVCP Location:</strong>\n\n${RVCP_DATA.college.address}\n\n🚇 1-minute walk from Jayanagar bus terminus & metro station!`,
     actionButtons: [
       { label: "🏫 Book Campus Visit", action: "campus_visit" },
       { label: "📞 Contact Us", action: "contact" },
@@ -639,7 +629,7 @@ const FAQ_KNOWLEDGE = [
   {
     id: "faq_neet_eligibility",
     patterns: ["neet", "is neet required", "is neet compulsory", "neet mandatory", "entrance exam", "kcet", "cutoff", "cut off", "pcb marks", "minimum percentage"],
-    answer: `📝 <strong>NEET & Eligibility Guidelines (BPT):</strong>\n\n• Candidates must have passed <strong>10+2 / PUC</strong> with Physics, Chemistry, Biology & English.\n• Minimum <strong>40% aggregate in PCB</strong> (35% for SC/ST candidates).\n• NCAHP / RGUHS framework requires candidate to have appeared in <strong>NEET / NCAHP</strong> entrance.\n• Minimum age: <strong>17+ years</strong>.\n\n💰 Top PCB scorers are eligible for <strong>Merit Scholarships up to ₹2,00,000</strong>!`,
+    answer: `📝 <strong>BPT Eligibility & NEET:</strong>\n\n• <strong>10+2 / PUC:</strong> Physics, Chemistry, Biology & English\n• <strong>Marks:</strong> Min 40% aggregate in PCB (35% for SC/ST; NCAHP: 50% + NEET)\n• <strong>Age:</strong> 17+ years | <strong>Scholarships up to ₹2 Lakhs</strong> for PCB merit!`,
     actionButtons: [
       { label: "📋 Full BPT Eligibility", action: "bpt_eligibility" },
       { label: "💰 Scholarship Details", action: "scholarships" },
@@ -650,7 +640,7 @@ const FAQ_KNOWLEDGE = [
   {
     id: "faq_fees",
     patterns: ["fee structure", "how much is fee", "course fee", "annual fee", "tuition fee", "cost of bpt", "cost of mpt", "package", "donation", "management quota fee"],
-    answer: `💰 <strong>RVCP Fee Structure:</strong>\n\nRVCP offers transparent and competitive fee structures adhering to Government of Karnataka and RGUHS norms, with <strong>Merit Scholarships up to ₹2 Lakhs</strong> for high PCB academic achievers.\n\nWould you like a customised fee breakdown?`,
+    answer: `💰 <strong>RVCP Fee Structure:</strong>\n\nFees adhere to Govt of Karnataka & RGUHS norms. Merit scholarships up to <strong>₹2 Lakhs</strong> are available for PCB achievers.\n\nPlease select a programme below for a customized fee breakdown:`,
     actionButtons: [
       { label: "🎓 BPT Fee Enquiry", action: "fee_enquiry_bpt" },
       { label: "📚 MPT Fee Enquiry", action: "fee_enquiry_mpt" },
@@ -661,7 +651,7 @@ const FAQ_KNOWLEDGE = [
   {
     id: "faq_career_placements",
     patterns: ["job", "jobs", "career", "salary", "placement", "placements", "recruiters", "scope", "future", "opportunities", "hospital jobs", "average salary"],
-    answer: `💼 <strong>Career Scope & Placements:</strong>\n\nPhysiotherapy graduates enjoy high global demand across hospitals, sports franchises, and rehabilitation clinics.\n\n• <strong>Initial Packages:</strong> ₹4.5 LPA – ₹9 LPA in top hospitals; up to ₹15+ LPA for experienced sports/neuro consultants.\n• <strong>Top Career Roles:</strong> Consultant Physiotherapist, Sports Team Physio, Stroke Rehab Specialist, Clinical Researcher, Academic Faculty.\n• <strong>Hospital Tie-ups:</strong> Hands-on postings at premier hospitals including Aster RV and super-speciality health networks.`,
+    answer: `💼 <strong>Career Scope & Placements:</strong>\n\n• <strong>Packages:</strong> ₹4.5 LPA – ₹9 LPA (up to ₹15+ LPA for senior specialists)\n• <strong>Roles:</strong> Hospitals, Sports Teams, Stroke/Spine Rehab, Corporate Ergonomics & Private Clinics\n• <strong>Clinical Postings:</strong> Hands-on training at Aster RV and partner super-speciality hospitals.`,
     actionButtons: [
       { label: "📈 BPT Career Paths", action: "bpt_career" },
       { label: "🏥 Clinical OPD & Postings", action: "clinical_services" },
@@ -671,7 +661,7 @@ const FAQ_KNOWLEDGE = [
   {
     id: "faq_timings",
     patterns: ["timing", "timings", "working hours", "college hours", "open hours", "operating hours", "schedule", "class time"],
-    answer: `⏰ <strong>College & Clinical Working Hours:</strong>\n\n• <strong>Academic Classes:</strong> 9:00 AM – 4:30 PM (Monday to Saturday)\n• <strong>Speciality OPD:</strong> 9:00 AM – 4:00 PM\n• <strong>Evening Speciality Clinic:</strong> 4:30 PM – 7:00 PM (Affordable public care & PG clinical training)\n• <strong>Sunday:</strong> Closed (Except emergency inpatient rounds)`,
+    answer: `⏰ <strong>College & OPD Timings:</strong>\n\n• <strong>Academic Classes:</strong> 9:00 AM – 4:30 PM (Mon–Sat)\n• <strong>Speciality OPD:</strong> 9:00 AM – 4:00 PM\n• <strong>Evening Clinic:</strong> 4:30 PM – 7:00 PM\n• <strong>Sunday:</strong> Closed`,
     actionButtons: [
       { label: "🏥 Clinical Services & OPD", action: "clinical_services" },
       { label: "🏫 Book Campus Visit", action: "campus_visit" },
@@ -681,7 +671,7 @@ const FAQ_KNOWLEDGE = [
   {
     id: "faq_duration",
     patterns: ["duration", "how many years", "how long", "course duration", "how long is bpt", "how long is mpt", "semesters"],
-    answer: `⏱️ <strong>Programme Durations:</strong>\n\n• <strong>BPT (Bachelor of Physiotherapy):</strong> <strong>4.5 Years</strong> (4 Years academic curriculum + 6 Months compulsory rotatory clinical internship).\n• <strong>MPT (Master of Physiotherapy):</strong> <strong>2 Years</strong> full-time intensive PG specialisation.`,
+    answer: `⏱️ <strong>Programme Durations:</strong>\n\n• <strong>BPT:</strong> <strong>4.5 Years</strong> (4 Years academic + 6 Months rotatory clinical internship)\n• <strong>MPT:</strong> <strong>2 Years</strong> (4 Semesters) full-time PG specialisation`,
     actionButtons: [
       { label: "🎓 Explore BPT (4.5 Yrs)", action: "bpt_main" },
       { label: "📚 Explore MPT (2 Yrs)", action: "mpt_main" },
@@ -696,7 +686,7 @@ const FAQ_KNOWLEDGE = [
       "dr. pruthviraj", "management", "trustees", "president", "shyam", "nagaraj", "avs murthy", "head of college",
       "head of institution", "director", "leadership", "who is head", "who is the head"
     ],
-    answer: `👨‍🏫 <strong>RVCP Principal & Institutional Leadership:</strong>\n\n• <strong>Principal:</strong> <strong>Dr. Pruthviraj R (PT)</strong>, Professor & Principal of RVCP, and Dean of Faculty in Physiotherapy & Allied Health Sciences at RGUHS.\n• <strong>President, RSST:</strong> Dr. M.P. Shyam\n• <strong>Hon. Secretary, RSST:</strong> Dr. (h.c.) A.V.S. Murthy\n• <strong>Hon. Joint Secretary, RSST:</strong> Mr. D.P. Nagaraj\n\nWould you like to connect with faculty or explore departments?`,
+    answer: `👨‍🏫 <strong>RVCP Leadership:</strong>\n\n• <strong>Principal:</strong> <strong>Dr. Pruthviraj R (PT)</strong> — Principal, RVCP & Dean of Faculty at RGUHS\n• <strong>President, RSST:</strong> Dr. M.P. Shyam\n• <strong>Hon. Secretary:</strong> Dr. (h.c.) A.V.S. Murthy\n• <strong>Hon. Joint Secretary:</strong> Mr. D.P. Nagaraj`,
     actionButtons: [
       { label: "🏢 Faculty & HOD Directory", action: "dept_contacts" },
       { label: "ℹ️ About RVCP & RSST", action: "about" },
@@ -707,7 +697,7 @@ const FAQ_KNOWLEDGE = [
   {
     id: "faq_hostel",
     patterns: ["hostel", "mess", "food", "stay", "accommodation", "room", "rooms", "sharing", "dormitory", "hostel fee", "mess fee", "curfew", "boys hostel", "girls hostel"],
-    answer: `🏠 <strong>RVCP Hostel & Mess Highlights:</strong>\n\n• Safe, modern student housing in Jayanagar with 24/7 security and Wi-Fi.\n• <strong>Sharing Options:</strong> 2 sharing (₹48,300/yr), 3 sharing (₹47,250/yr), 4 sharing (₹46,200/yr), Dormitory (₹36,750/yr).\n• <strong>Hygienic Mess:</strong> ₹52,800/yr (payable in 2 six-monthly instalments of ₹26,400).\n• <strong>Refundable Caution Deposit:</strong> ₹5,000.`,
+    answer: `🏠 <strong>Hostel & Mess Details (Annual):</strong>\n\n• <strong>Sharing:</strong> 2-sharing (₹48,300) | 3-sharing (₹47,250) | 4-sharing (₹46,200) | Dorm (₹36,750)\n• <strong>Mess:</strong> ₹52,800/yr (₹26,400 per 6 months)\n• <strong>Caution Deposit:</strong> ₹5,000 (Refundable)\n• Safe campus living in Jayanagar with 24/7 security & Wi-Fi.`,
     actionButtons: [
       { label: "🏠 Full Hostel Details", action: "hostel_details" },
       { label: "🏫 Book Campus Visit", action: "campus_visit" },
@@ -717,7 +707,7 @@ const FAQ_KNOWLEDGE = [
   {
     id: "faq_affiliation",
     patterns: ["affiliated", "affiliation", "university", "recognition", "recognised", "rguhs", "ncahp", "government", "accreditation", "validity"],
-    answer: `🏛️ <strong>Affiliation & Recognitions:</strong>\n\n• Affiliated to <strong>Rajiv Gandhi University of Health Sciences (RGUHS)</strong>, Karnataka.\n• Recognised by the <strong>Government of Karnataka</strong>.\n• Fully aligned with the <strong>National Commission for Allied and Healthcare Professions (NCAHP)</strong>.\n• Backed by the 80+ year legacy of <strong>Rashtreeya Sikshana Samithi Trust (RSST)</strong>.`,
+    answer: `🏛️ <strong>Affiliation & Approvals:</strong>\n\n• Affiliated to <strong>Rajiv Gandhi University of Health Sciences (RGUHS)</strong>\n• Recognised by <strong>Govt of Karnataka</strong> & aligned with <strong>NCAHP</strong>\n• Backed by the 80+ year legacy of <strong>RSST</strong> (est. 1940)`,
     actionButtons: [
       { label: "ℹ️ About RVCP", action: "about" },
       { label: "🎓 BPT Programme", action: "bpt_main" },
@@ -727,9 +717,9 @@ const FAQ_KNOWLEDGE = [
   {
     id: "faq_apply",
     patterns: ["how to apply", "application process", "apply online", "admission portal", "registration form", "sap portal", "apply for bpt", "apply for mpt"],
-    answer: `📝 <strong>How to Apply for Admissions (2026-2027):</strong>\n\n1. You can apply directly through the official <strong>RVEI SAP Admission Portal</strong>.\n2. Or submit your details right here in this chat to receive priority guidance and fee estimates from an RVCP admissions counsellor!`,
+    answer: `📝 <strong>How to Apply (2026–2027):</strong>\n\n1. Apply online via the <strong>RVEI SAP Admission Portal</strong>\n2. Or share your details right here to receive immediate admission guidance!`,
     actionButtons: [
-      { label: "💰 BPT Fee & Application", action: "fee_enquiry_bpt" },
+      { label: "💰 BPT Application & Fee", action: "fee_enquiry_bpt" },
       { label: "📚 MPT Application", action: "fee_enquiry_mpt" },
       { label: "📞 Request Callback", action: "talk_to_counsellor" }
     ]
