@@ -232,14 +232,25 @@ const CHAT_FLOWS = {
       { text: `Hello! 👋 Welcome to <strong>RV College of Physiotherapy (RVCP)</strong>, Bengaluru.\n\nHow can we help you today? Please choose an option below:`, delay: 300 }
     ],
     buttons: [
-      { label: "🎓 BPT (Bachelor of Physiotherapy)", action: "bpt_main" },
-      { label: "📚 MPT (Master of Physiotherapy)", action: "mpt_main" },
+      { label: "🎓 Courses Offered", action: "courses_main" },
       { label: "💰 Scholarships (Up to ₹2L)", action: "scholarships" },
       { label: "🏥 Clinical Services & OPD", action: "clinical_services" },
       { label: "🏠 Hostel & Fees", action: "hostel_details" },
       { label: "🏫 Book Campus Visit", action: "campus_visit" },
       { label: "ℹ️ About RVCP", action: "about" },
       { label: "📞 Contact Us", action: "contact" }
+    ]
+  },
+
+  // ─── Courses Flow ────────────────────────────────────────────
+  courses_main: {
+    messages: [
+      { text: `<strong>🎓 Programmes & Courses Offered at RVCP</strong>\n\nRVCP offers premier physiotherapy degrees affiliated to <strong>RGUHS</strong>:\n\n• <strong>BPT (Bachelor of Physiotherapy):</strong> 4.5 Years (4 Yrs + 6 Mo Internship)\n• <strong>MPT (Master of Physiotherapy):</strong> 2 Years (6 Super-Specialisations)\n\nPlease choose a course to explore:`, delay: 300 }
+    ],
+    buttons: [
+      { label: "🎓 BPT (Bachelor of Physiotherapy)", action: "bpt_main" },
+      { label: "📚 MPT (Master of Physiotherapy)", action: "mpt_main" },
+      { label: "← Back to Main Menu", action: "welcome" }
     ]
   },
 
@@ -254,7 +265,8 @@ const CHAT_FLOWS = {
       { label: "📈 Career Opportunities", action: "bpt_career" },
       { label: "📑 Documents Required", action: "bpt_documents" },
       { label: "📞 Talk to Counsellor", action: "talk_to_counsellor" },
-      { label: "← Back to Main Menu", action: "welcome" }
+      { label: "← All Courses", action: "courses_main" },
+      { label: "← Main Menu", action: "welcome" }
     ]
   },
 
@@ -329,7 +341,8 @@ const CHAT_FLOWS = {
       { label: "💰 MPT Fee Enquiry", action: "fee_enquiry_mpt" },
       { label: "📑 Documents Required", action: "mpt_documents" },
       { label: "📞 Priority MPT Counselling", action: "book_counselling" },
-      { label: "← Back to Main Menu", action: "welcome" }
+      { label: "← All Courses", action: "courses_main" },
+      { label: "← Main Menu", action: "welcome" }
     ]
   },
 
@@ -742,6 +755,7 @@ const INTENT_MAP = [
   { keywords: ["book visit", "book campus tour", "schedule visit", "visit college", "see campus"], action: "campus_visit", weight: 35 },
 
   // Focused Topic Intents (Medium-High Priority)
+  { keywords: ["courses", "course", "programmes", "programme", "programs", "program", "degrees", "courses offered", "what courses", "all courses", "academics"], action: "courses_main", weight: 30 },
   { keywords: ["scholarship", "scholarships", "financial aid", "fee waiver", "2 lakh", "1 lakh", "merit scholarship", "concession"], action: "scholarships", weight: 28 },
   { keywords: ["clinical", "opd", "clinic", "evening clinic", "hospital posting", "aster rv", "patient care", "practical training", "shoulder clinic", "spine clinic"], action: "clinical_services", weight: 28 },
   { keywords: ["hostel", "accommodation", "stay", "room", "rooms", "mess", "food", "dormitory", "sharing", "guest room", "caution deposit"], action: "hostel_details", weight: 28 },

@@ -14,8 +14,11 @@
   let promptDismissed = false;
   let inactivityTimer = null;
   const INACTIVITY_TIMEOUT = 120000; // 120 seconds (2 minutes)
-  const STORAGE_KEY = 'rvcp_chatbot_state_v2';
-  try { localStorage.removeItem('rvcp_chatbot_state'); } catch (_) {}
+  const STORAGE_KEY = 'rvcp_chatbot_state_v3';
+  try {
+    localStorage.removeItem('rvcp_chatbot_state');
+    localStorage.removeItem('rvcp_chatbot_state_v2');
+  } catch (_) {}
 
   // Helper to dynamically resolve the logo path in WordPress or standalone environments
   const getLogoUrl = () => {
