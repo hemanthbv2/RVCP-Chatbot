@@ -229,7 +229,7 @@ const CHAT_FLOWS = {
   // Welcome / Root flow
   welcome: {
     messages: [
-      { text: `Hello! 👋 Welcome to <strong>RV College of Physiotherapy (RVCP)</strong>, Bengaluru.\n\n🎓 <strong>Admissions Open 2026–2027</strong> | RGUHS Affiliated\n💰 Merit Scholarships up to <strong>₹2,00,000</strong>!\n\nHow can we help you today? Please choose an option below:`, delay: 350 }
+      { text: `Hello! 👋 Welcome to <strong>RV College of Physiotherapy (RVCP)</strong>, Bengaluru.\n\nHow can we help you today? Please choose an option below:`, delay: 300 }
     ],
     buttons: [
       { label: "🎓 BPT (Bachelor of Physiotherapy)", action: "bpt_main" },
